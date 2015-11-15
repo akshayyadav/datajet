@@ -1,0 +1,10 @@
+== README
+
+A small rails app for data management at fuel stations.
+
+* Ruby version
+  - ruby 2.1.5p273
+  - rails 4.2.4
+
+* System dependencies
+  - requires ruby, rails and sqlite3
