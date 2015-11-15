@@ -1,0 +1,32 @@
+<%= form_for @diesel do |f| %>
+
+  <% if @diesel.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@diesel.errors.count, "error") %> prohibited
+        this record from being saved:
+      </h2>
+      <ul>
+        <% @diesel.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :date_time %><br>
+    <%= f.date_select :reading_at %>
+    <%= f.time_select :reading_at, :ignore_date => true %>
+  </p>
+
+  <p>
+    <%= f.label :current_stock %><br>
+    <%= f.number_field :current_stock %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

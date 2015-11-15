@@ -1,0 +1,14 @@
+<h1>Diesel Records:</h1>
+
+<p>
+  <strong>Reading taken at:</strong>
+  <%= @diesel.reading_at %>
+</p>
+
+<p>
+  <strong>Stock Reading:</strong>
+  <%= @diesel.current_stock %>
+</p>
+
+<%= link_to 'Edit', edit_diesel_path(@diesel) %> |
+<%= link_to 'Back', diesels_path %>

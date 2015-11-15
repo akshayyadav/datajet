@@ -1,0 +1,23 @@
+<h1>Listing diesel records</h1>
+
+<%= link_to 'New diesel record', new_diesel_path %>
+
+<table>
+  <tr>
+    <th>DateTime</th>
+    <th>Stock Reading</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @diesels.each do |diesel| %>
+    <tr>
+      <td><%= diesel.reading_at %></td>
+      <td><%= diesel.current_stock %></td>
+      <td><%= link_to 'Show', diesel_path(diesel) %></td>
+      <td><%= link_to 'Edit', edit_diesel_path(diesel) %></td>
+      <td><%= link_to 'Destroy', diesel_path(diesel),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

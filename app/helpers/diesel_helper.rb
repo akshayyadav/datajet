@@ -1,0 +1,2 @@
+module DieselHelper
+end
