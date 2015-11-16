@@ -2,7 +2,7 @@
 
 run() {
   check_running_as_root
-  install_dev_group_and_epel§
+  install_dev_group_and_epel
   install_rvm
   install_ruby
   install_rails
@@ -26,7 +26,8 @@ check_running_as_root() {
 install_dev_group_and_epel() {
   yum -y update
   yum groupinstall -y 'development tools'
-  sudo su -c 'rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm'
+  curl -O http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+  rpm -Uvh epel-release-6*.rpm
   yum -y update
   yum install -y curl-devel sqlite-devel libyaml-devel git vim
 }
@@ -68,17 +69,16 @@ install_nginx() {
   # curl-config install
   yum -y install libcurl-devel
   passenger-install-nginx-module --auto --languages ruby
-  curl -o /etc/rc.d/init.d/nginx https://gitlab.nat.bt.com/radius/mna_controller/raw/master/setup/nginx_control_script.sh
+  curl -o /etc/rc.d/init.d/nginx https://raw.githubusercontent.com/akshayyadav/datajet/master/setup/nginx_control_script.sh
   chmod +x /etc/rc.d/init.d/nginx
 
-  curl -o /opt/nginx/conf/nginx.conf https://gitlab.nat.bt.com/radius/mna_controller/raw/master/setup/nginx.conf
+  curl -o /opt/nginx/conf/nginx.conf https://raw.githubusercontent.com/akshayyadav/datajet/master/setup/nginx.conf
   service nginx start
   chkconfig nginx on
 }
 
 setup_logrotate() {
-  curl -o /etc/logrotate.d/nginx https://gitlab.nat.bt.com/radius/mna_controller/raw/master/setup/logrotate.d/nginx
-  curl -o /etc/logrotate.d/mna_controller https://gitlab.nat.bt.com/radius/mna_controller/raw/master/setup/logrotate.d/mna_controller
+  curl -o /etc/logrotate.d/nginx https://raw.githubusercontent.com/akshayyadav/datajet/master/setup/logrotate.d/nginx
 }
 
 set_rails_env() {
@@ -90,8 +90,6 @@ EOF
 }
 
 install_pwgen() {
-  curl -O http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-  rpm -Uvh epel-release-6*.rpm
   yum -y install pwgen
 }
 
