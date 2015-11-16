@@ -1,23 +1,34 @@
 <h1>Listing diesel records</h1>
 
-<%= link_to 'New diesel record', new_diesel_path %>
+<p><%= link_to new_diesel_path, class: "btn btn-primary btn-sm" do %>
+  <i class="glyphicon glyphicon-plus"></i> New diesel record
+<% end %>
+</p>
 
-<table>
+<table class="table table-hover table-condensed">
   <tr>
     <th>DateTime</th>
     <th>Stock Reading</th>
-    <th colspan="2"></th>
+    <th colspan="3"></th>
   </tr>
 
   <% @diesels.each do |diesel| %>
     <tr>
       <td><%= diesel.reading_at %></td>
       <td><%= diesel.current_stock %></td>
-      <td><%= link_to 'Show', diesel_path(diesel) %></td>
-      <td><%= link_to 'Edit', edit_diesel_path(diesel) %></td>
-      <td><%= link_to 'Destroy', diesel_path(diesel),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <%= link_to diesel_path(diesel), class: "btn btn-primary btn-xs" do %>
+          <i class="glyphicon glyphicon-th-list"></i> Show
+        <% end %>
+        <%= link_to edit_diesel_path(diesel), class: "btn btn-warning btn-xs" do %>
+          <i class="glyphicon glyphicon-pencil"></i> Edit
+        <% end %>
+        <%= link_to diesel_path(diesel), class: "btn btn-danger btn-xs",
+          method: :delete,
+          data: { confirm: 'Are you sure?' } do %>
+          <i class="glyphicon glyphicon-remove"></i> Delete
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

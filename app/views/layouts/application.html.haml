@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "Akshay Yadav", :name => "author"}/
+    / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    -#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+    / HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    %script{:src => "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"}
+    %script{:src => "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"}
+
+    %title
+      = "DataJet"
+
+    = csrf_meta_tags
+  %body
+    = render '/shared/navigation'
+    .container
+      -if flash[:error]
+        .alert.alert-danger{role: "alert"}
+          = flash[:error]
+      -if flash[:info]
+        .alert.alert-success{role: "alert"}
+          = flash[:info]
+      = yield
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true

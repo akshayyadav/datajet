@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+
+.navbar-inverse
+  background-color: #222222
+  .navbar-nav >
+    .active > a:hover
+      background-color: #5521FF
+    li > a
+      &:hover, &:focus
+        background-color: #5521FF
+    .active > a
+      background-color: #A62828
+    .open > a
+      background-color: #A62828
+      &:hover, &:focus
+        background-color: #A62828
+
+.dropdown-menu
+  background-color: #FFFFFF
+  > li > a
+    &:hover, &:focus
+      background-color: #CA394C
+
+.navbar-inverse
+  background-image: none
+
+.dropdown-menu > li > a
+  &:hover, &:focus
+    background-image: none
+
+.navbar-inverse
+  border-color: #080808
+  .navbar-brand
+    color: #B7B3BD
+    &:hover
+      color: #FFFFFF
+  .navbar-nav >
+    li > a
+      color: #999999
+      &:hover, &:focus
+        color: #FFFFFF
+    .active > a
+      color: #FFFFFF
+    .open > a
+      color: #FFFFFF
+      &:hover, &:focus
+        color: #FFFFFF
+    .active > a
+      &:hover, &:focus
+        color: #FFFFFF
+
+.dropdown-menu > li > a
+  color: #333333
+  &:hover, &:focus
+    color: #FFFFFF
+
+.navbar-inverse .navbar-nav > .dropdown > a
+  .caret
+    border-top-color: #999999
+  &:hover .caret
+    border-top-color: #FFFFFF
+  .caret
+    border-bottom-color: #999999
+  &:hover .caret
+    border-bottom-color: #FFFFFF
+
+body
+  padding-top: 50px
+
+.starter-template
+  padding: 40px 15px
+  text-align: center
