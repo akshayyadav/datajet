@@ -14,23 +14,50 @@
   <% end %>
 
   <div class="field form-group">
-    <%= f.label :date_time, class: 'col-sm-2 control-label' %>
+    <%= f.label :date, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.date_select :reading_at, class: 'form-control' %>
-      <%= f.time_select :reading_at, :ignore_date => true, class: 'form-control' %>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :current_stock, class: 'col-sm-2 control-label' %>
+    <%= f.label :received_stock, class: 'col-sm-2 control-label' %>
     <div class="col-sm-2">
-      <%= f.number_field :current_stock, class: 'form-control' %>
+      <%= f.number_field :received_stock, class: 'form-control' , :'data-toggle' => 'popover', :'data-trigger' => 'hover', :'data-placement' => 'bottom', :'data-content' => 'Stock added today' %>
+    </div>
+    <%= f.label :actual_stock, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :actual_stock, class: 'form-control', :'data-toggle' => 'popover', :'data-trigger' => 'hover', :'data-placement' => 'bottom', :'data-content' => 'Tank dip reading' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :opening_meter, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :opening_meter, class: 'form-control' , :'data-toggle' => 'popover', :'data-trigger' => 'hover', :'data-placement' => 'bottom', :'data-content' => 'HSD machine meter reading' %>
+    </div>
+    <%= f.label :testing_meter, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :testing_meter, class: 'form-control' , :'data-toggle' => 'popover', :'data-trigger' => 'hover', :'data-placement' => 'bottom', :'data-content' => 'HSD testing value' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :purchase_rate, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :purchase_rate, class: 'form-control', step: 0.001, :'data-toggle' => 'popover', :'data-trigger' => 'hover', :'data-placement' => 'bottom', :'data-content' => 'Purchase rate for stock-in HSD' %>
+    </div>
+    <%= f.label :sale_rate, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.number_field :sale_rate, class: 'form-control', step: 0.001, :'data-toggle' => 'popover', :'data-trigger' => 'hover', :'data-placement' => 'bottom', :'data-content' => 'Current sale rate for HSD' %>
     </div>
   </div>
 
   <div class="actions form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Add", class: "btn btn-success" %>
+      <%= button_tag "Add", class: "btn btn-success", :type => 'submit' do %>
+        <i class="glyphicon glyphicon-ok"></i> Add
+      <% end %>
       <%= button_tag "Clear", class: "btn btn-danger", :type => 'reset' do %>
         <i class="glyphicon glyphicon-remove"></i> Clear
       <% end %>

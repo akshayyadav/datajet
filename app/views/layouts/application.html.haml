@@ -25,6 +25,6 @@
       -if flash[:info]
         .alert.alert-success{role: "alert"}
           = flash[:info]
-      = yield
+    = yield
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true

@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115180200) do
+ActiveRecord::Schema.define(version: 20151231142354) do
 
   create_table "diesels", force: :cascade do |t|
-    t.integer  "current_stock"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.datetime "reading_at"
+    t.date     "reading_at"
+    t.integer  "received_stock",                         default: 0,   null: false
+    t.integer  "actual_stock",                           default: 0,   null: false
+    t.integer  "closing_stock",                          default: 0
+    t.integer  "opening_meter",                          default: 0,   null: false
+    t.integer  "testing_meter",                          default: 0,   null: false
+    t.integer  "actual_sale",                            default: 0
+    t.decimal  "purchase_rate",  precision: 6, scale: 3, default: 0.0, null: false
+    t.decimal  "sale_rate",      precision: 6, scale: 3, default: 0.0, null: false
+    t.integer  "total_stock",                            default: 0,   null: false
+    t.integer  "closing_meter",                          default: 0,   null: false
+    t.integer  "opening_stock",                          default: 0,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

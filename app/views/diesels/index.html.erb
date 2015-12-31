@@ -1,21 +1,45 @@
-<h1>Listing diesel records</h1>
 
-<p><%= link_to new_diesel_path, class: "btn btn-primary btn-sm" do %>
-  <i class="glyphicon glyphicon-plus"></i> New diesel record
-<% end %>
+<%= render 'searchform' %>
+
+<div class="container-fluid">
+  <h1>Listing diesel records</h1>
+
+  <p><%= link_to new_diesel_path, class: "btn btn-primary btn-sm" do %>
+    <i class="glyphicon glyphicon-plus"></i> New diesel record
+  <% end %>
 </p>
 
 <table class="table table-hover table-condensed">
   <tr>
-    <th>DateTime</th>
-    <th>Stock Reading</th>
-    <th colspan="3"></th>
+    <th>Date</th>
+    <th>Opening Stock</th>
+    <th>Received Stock</th>
+    <th>Actual Stock</th>
+    <th>Total Stock</th>
+    <th>Closing Stock</th>
+    <th>Opening Meter</th>
+    <th>Testing Meter</th>
+    <th>Closing Meter</th>
+    <th>Actual Sale</th>
+    <th>Purchase Rate</th>
+    <th>Sale Rate</th>
+    <th colspan="13"></th>
   </tr>
 
   <% @diesels.each do |diesel| %>
     <tr>
       <td><%= diesel.reading_at %></td>
-      <td><%= diesel.current_stock %></td>
+      <td><%= diesel.opening_stock %></td>
+      <td><%= diesel.received_stock %></td>
+      <td><%= diesel.actual_stock %></td>
+      <td><%= diesel.total_stock %></td>
+      <td><%= diesel.closing_stock %></td>
+      <td><%= diesel.opening_meter %></td>
+      <td><%= diesel.testing_meter %></td>
+      <td><%= diesel.closing_meter %></td>
+      <td><%= diesel.actual_sale %></td>
+      <td><%= diesel.purchase_rate %></td>
+      <td><%= diesel.sale_rate %></td>
       <td>
         <%= link_to diesel_path(diesel), class: "btn btn-primary btn-xs" do %>
           <i class="glyphicon glyphicon-th-list"></i> Show
@@ -32,3 +56,4 @@
     </tr>
   <% end %>
 </table>
+</div>

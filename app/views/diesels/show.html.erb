@@ -1,14 +1,57 @@
-<h1>Diesel Records:</h1>
+<div class="container">
+  <h3>Diesel Record for:
+    <%= @diesel.reading_at %>
+  </h3>
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Opening Stock</th>
+          <th>Received Stock</th>
+          <th>Actual Stock</th>
+          <th>Total Stock</th>
+          <th>Closing Stock</th>
+          <th>Opening Meter</th>
+          <th>Testing Meter</th>
+          <th>Closing Meter</th>
+          <th>Actual Sale</th>
+          <th>Purchase Rate</th>
+          <th>Sale Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @diesel.reading_at %></td>
+          <td><%= @diesel.opening_stock %></td>
+          <td><%= @diesel.received_stock %></td>
+          <td><%= @diesel.actual_stock %></td>
+          <td><%= @diesel.total_stock %></td>
+          <td><%= @diesel.closing_stock %></td>
+          <td><%= @diesel.opening_meter %></td>
+          <td><%= @diesel.testing_meter %></td>
+          <td><%= @diesel.closing_meter %></td>
+          <td><%= @diesel.actual_sale %></td>
+          <td><%= @diesel.purchase_rate %></td>
+          <td><%= @diesel.sale_rate %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<p>
-  <strong>Reading taken at:</strong>
-  <%= @diesel.reading_at %>
-</p>
+  <div class='col-md-2 text-center'>
+    <%= link_to edit_diesel_path(@diesel), class: "btn btn-warning btn-sml" do %>
+      <i class="glyphicon glyphicon-pencil"></i> Edit
+    <% end %>
+  </div>
+  <div class='col-md-2 text-center'>
+    <%= link_to diesel_path(@diesel), class: "btn btn-danger btn-sml",
+      method: :delete,
+      data: { confirm: 'Are you sure?' } do %>
+      <i class="glyphicon glyphicon-remove"></i> Delete
+    <% end %>
+  </div>
 
-<p>
-  <strong>Stock Reading:</strong>
-  <%= @diesel.current_stock %>
-</p>
+  <%= link_to 'Back', diesels_path %>
 
-<%= link_to 'Edit', edit_diesel_path(@diesel) %> |
-<%= link_to 'Back', diesels_path %>
+</div>
