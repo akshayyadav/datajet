@@ -1,0 +1,68 @@
+
+<%= render 'searchform' %>
+
+<div class="container-fluid">
+  <h1>Listing petrol records</h1>
+
+  <p><%= link_to new_msrecord_path, class: "btn btn-primary btn-sm" do %>
+    <i class="glyphicon glyphicon-plus"></i> New petrol record
+  <% end %>
+</p>
+
+<table class="table table-hover table-condensed">
+  <tr>
+    <th>Date</th>
+    <th>Opening Stock</th>
+    <th>Received Stock</th>
+    <th>Actual Stock</th>
+    <th>Total Stock</th>
+    <th>Closing Stock</th>
+    <th>Opening Meter</th>
+    <th>Testing Meter</th>
+    <th>Closing Meter</th>
+    <th>Actual Sale</th>
+    <th>Purchase Rate</th>
+    <th>Sale Rate</th>
+    <th colspan="13"></th>
+  </tr>
+
+  <% @msrecords.each do |msrecord| %>
+    <tr>
+      <td><%= msrecord.reading_at %></td>
+      <td><%= msrecord.opening_stock %></td>
+      <td><%= msrecord.received_stock %></td>
+      <td><%= msrecord.actual_stock %></td>
+      <td><%= msrecord.total_stock %></td>
+      <td><%= msrecord.closing_stock %></td>
+      <td><%= msrecord.opening_meter %></td>
+      <td><%= msrecord.testing_meter %></td>
+      <td><%= msrecord.closing_meter %></td>
+      <td><%= msrecord.actual_sale %></td>
+      <td><%= msrecord.purchase_rate %></td>
+      <td><%= msrecord.sale_rate %></td>
+      <td>
+        <%= link_to msrecord_path(msrecord), class: "btn btn-primary btn-xs" do %>
+          <i class="glyphicon glyphicon-th-list"></i> Show
+        <% end %>
+        <%= link_to edit_msrecord_path(msrecord), class: "btn btn-warning btn-xs" do %>
+          <i class="glyphicon glyphicon-pencil"></i> Edit
+        <% end %>
+        <%= link_to msrecord_path(msrecord), class: "btn btn-danger btn-xs",
+          method: :delete,
+          data: { confirm: 'Are you sure?' } do %>
+          <i class="glyphicon glyphicon-remove"></i> Delete
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<p>
+  <strong>Download as:</strong>
+  <%= link_to msrecords_path(params.merge(format: "csv")), class: "btn btn-info btn-sm" do %>
+    <i class="glyphicon glyphicon-save"></i> CSV
+  <% end %>
+  <%= link_to msrecords_path(params.merge(format: "xlsx")) , class: "btn btn-info btn-sm" do %>
+    <i class="glyphicon glyphicon-save"></i> Excel
+  <% end %>
+</p>
+</div>

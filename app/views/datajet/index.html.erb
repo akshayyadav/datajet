@@ -1,8 +1,15 @@
-<h1>Datajet!</h1>
-<p>Lets get your data through our datagate!</p>
+<div class="container">
+  <h1>Datajet!</h1>
+  <p>Lets get your data through our datagate!</p>
 
+  <div class="text-center">
+    <%= link_to "/diesels", class: "btn btn-primary" do %>
+      <i class="glyphicon glyphicon-list-alt"></i> Diesel Records
+    <% end %>
 
-<center> Your data - Now Boarding!</center>
-
-
-<%= link_to 'Diesel Records', controller: 'diesels' %>
+    <%= link_to "/msrecords", class: "btn btn-primary" do %>
+      <i class="glyphicon glyphicon-list-alt"></i> Petrol Records
+    <% end %>
+  </div>
+  <center> Your data - Now Boarding!</center>
+</div>

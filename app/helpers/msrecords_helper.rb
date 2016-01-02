@@ -1,0 +1,2 @@
+module MsrecordsHelper
+end
