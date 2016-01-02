@@ -16,6 +16,12 @@ class DieselsController < ApplicationController
       end_date   = params[:end_date].to_date
       @diesels   = Diesel.search(start_date, end_date)
     end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @diesels.to_csv, filename: "diesel-records-#{Time.now.strftime("%d-%m-%Y-%R")}.csv" }
+      format.xlsx { render xlsx: 'excel', filename: "diesel-records-#{Date.today}.xlsx" }
+    end
   end
 
   def show

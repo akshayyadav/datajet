@@ -56,4 +56,13 @@
     </tr>
   <% end %>
 </table>
+<p>
+  <strong>Download as:</strong>
+  <%= link_to diesels_path(params.merge(format: "csv")), class: "btn btn-info btn-sm" do %>
+    <i class="glyphicon glyphicon-save"></i> CSV
+  <% end %>
+  <%= link_to diesels_path(params.merge(format: "xlsx")) , class: "btn btn-info btn-sm" do %>
+    <i class="glyphicon glyphicon-save"></i> Excel
+  <% end %>
+</p>
 </div>

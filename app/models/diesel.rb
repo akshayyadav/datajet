@@ -40,6 +40,20 @@ class Diesel < ActiveRecord::Base
 
   def self.search(start_date, end_date)
     where("reading_at >= ? and reading_at <= ?", start_date, end_date)
-    #find(:all, :conditions => ['date >= ? and date <= ?', start_date, end_date])
+  end
+
+  def self.to_csv()
+    column_names  = ["Date", "Opening Stock", "Received Stock", "Actual Stock", "Total Stock", "Closing Stock", "Opening Meter",
+                     "Testing Meter", "Closing Meter", "Actual Sale", "Purchase Rate", "Sale Rate"]
+    attributes    = %w{reading_at opening_stock received_stock actual_stock total_stock closing_stock opening_meter
+                    testing_meter closing_meter actual_sale purchase_rate sale_rate}
+
+    CSV.generate(headers: true) do |csv|
+      csv << column_names
+      all.each do |diesel|
+        #csv << diesel.attributes.values_at(*attributes)
+        csv << attributes.map{ |attr| diesel.send(attr) }
+      end
+    end
   end
 end
